@@ -66,13 +66,13 @@ public class Ejecucion {
 					option=true;
 					break;
 					
-				case 3: 
+			/*	case 3: 
 					
 					System.out.println("Leyendo Departamento");
 					int dpt=scn.nextInt();
 					this.getDept(dpt);
 					
-					break;
+					break;*/
 
 				default :
 					option=false;
@@ -121,7 +121,12 @@ public class Ejecucion {
 		
 	}
 	
+	/*
 	
+	/**
+	 * Lee un departamento en funcion de su numero
+	 * @param numDpt
+	 
 	public void getDept(int numDpt) {
 		
 		String path = System.getProperty("user.home");
@@ -171,7 +176,9 @@ public class Ejecucion {
 		}
 		
 		
+		
+		
 	}
 	
-
+*/
 }
