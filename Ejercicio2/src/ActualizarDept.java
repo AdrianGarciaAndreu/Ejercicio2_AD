@@ -28,22 +28,25 @@ public class ActualizarDept {
 		System.out.println("3 Salir");
 		
 		Scanner scn = new Scanner(System.in);
-		System.out.print("Introduzca Opcion: ");
+		System.out.print("Introduzca Opcion: \n");
 		int num = scn.nextInt();
 		
 		
 		switch (num) {
+		
+		//Modifica un departamento
 		case 1: 
 			String user = System.getProperty("user.home");
 			try {
-				this.ModDpts(user, 1, "PACO_SIN_PENE", "El otro mundo");
+				this.ModDpts(user, 1, "PACO", "El otro mundo");
 			} catch (IOException e1) {
 			
 				e1.printStackTrace();
 			}
 			
 			break;
-			
+		
+		// Lista los departamentos actuales
 		case 2:
 			try {
 				
@@ -62,6 +65,7 @@ public class ActualizarDept {
 		
 		default:
 			System.out.println("TODO MAL");
+			this.Menu();
 			break;
 		
 		}
@@ -71,14 +75,22 @@ public class ActualizarDept {
 	
 	
 	
-	
+	/**
+	 * Modifica un departamento a razon del numero de departamento que
+	 * introduzca el usuario (modifica, nombre y localidad
+	 * @param path ruta del archivo "departamentos.dat"
+	 * @param cod codigo del dapartamento a modifacar
+	 * @param Nom nombre nuevo para el departamento
+	 * @param Loc localidad nueva para el departamento
+	 * @throws IOException
+	 */
 	public void ModDpts(String path, int cod, String Nom, String Loc) throws IOException{
 		
 		File f = new File(path+"/departamentos.dat");
 		FileInputStream fs = new FileInputStream(f);
-		File f_tmp = null;
-		
 		ObjectInputStream DataIS = new ObjectInputStream(fs);
+		
+		File f_tmp = null; //archivo 2 temporal
 		
 		// Lectura de todos los Departamentos
 		while (true){
@@ -146,14 +158,13 @@ public class ActualizarDept {
 		
 		while (true) {
 			try {
-				Departamentos dept =(Departamentos)DataIS.readObject();
-				
+				Departamentos dept =(Departamentos)DataIS.readObject();				
 				System.out.println("codigo: "+dept.getDeptNum()+" nombre: "+dept.getDeptNom());
 			
 			}catch (EOFException e2) {
 				
-				System.out.println("Fin de la transmision desde Marte");
-				DataIS.close(); fs.close(); this.Menu();
+				System.out.println(" \nFin de la transmision desde Marte \n");
+				//2DataIS.close(); fs.close(); this.Menu();
 				
 			} 
 			
