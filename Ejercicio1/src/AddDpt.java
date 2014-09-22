@@ -122,6 +122,7 @@ private File f; //archivo de almacenamiento
 
 				} catch (EOFException salida){
 					System.out.println("lectura completada");
+					this.objectsReaded.clear();
 					reading = false;
 				}
 

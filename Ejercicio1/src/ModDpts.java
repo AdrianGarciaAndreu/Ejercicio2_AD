@@ -63,8 +63,34 @@ public class ModDpts {
 						}
 						else {reading=false;}
 
-						//catch de salida
-					} catch (ClassNotFoundException e) {
+					
+					}
+					//Fin de bucle
+					catch (EOFException e2){
+						
+						//Flujos de salida
+						FileOutputStream fOS = new FileOutputStream(this.f);
+						ObjectOutputStream ObOS = new ObjectOutputStream(fOS);
+						
+						for (int i=0;i<this.objectsReaded.size();i++) {
+							Departamento dp2 = (Departamento)this.objectsReaded.get(i);
+							ObOS.writeObject(dp2);
+							System.out.println(dp2.getDeptNom()+" "+dp2.getDeptLocalidad());
+							
+							System.out.println("Registro "+i+" re-escrito correctamente");
+							
+							
+						
+						}
+						
+						
+						
+						System.out.println("Fin del archivo modificado");
+						this.objectsReaded.clear();
+						reading = false;
+					} 
+					
+					catch (ClassNotFoundException e) {
 						System.out.println("Fin de lecutra del archivo"+this.f.getName()+
 								"Datos almacenados en memoria\n");
 						reading=false;
@@ -73,20 +99,10 @@ public class ModDpts {
 				}//fin de bucle
 
 
-				FileOutputStream fOS = new FileOutputStream(this.f);
-				ObjectOutputStream ObOS = new ObjectOutputStream(fOS);
-
-				for (int i=0;i<this.objectsReaded.size();i++) {
-					ObOS.writeObject( this.objectsReaded.get(i) );
-					System.out.println("Registro "+i+" re-escrito correctamente");
-				}
-
 				System.out.println("Archivo modificado correctamente. \n");
 
+			}
 			
-			}catch (EOFException e2){
-				e2.printStackTrace();
-			} 
 			catch (FileNotFoundException e) {
 
 				System.out.println("Fallo al conectar con el Archivo "+this.f.getName()); 

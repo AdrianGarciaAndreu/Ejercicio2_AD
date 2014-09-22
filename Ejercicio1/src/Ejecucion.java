@@ -8,15 +8,15 @@ public class Ejecucion {
 		
 		AddDpt ad = new AddDpt();
 		
-		//ad.createDpt(1, "Adrian", "Valencia");
-		//ad.createDpt(2, "Shiru", "Madrid");
-		//ad.createDpt(3, "Lala", "Brasil");
+		ad.createDpt(1, "Adrian", "Valencia");
+		ad.createDpt(2, "Pepe", "Madrid");
+		ad.createDpt(3, "Juan", "Brasil");
 		
 		ad.listDepts();
 		
 		ModDpts mo = new ModDpts();
-		mo.UpdateDept(1, "Silvia", "Madrid");
-		
+		mo.UpdateDept(1, "Pepe", "Puzol");
+		mo.UpdateDept(2, "AKSJDS", "Japon");
 		ad.listDepts();
 		
 		
